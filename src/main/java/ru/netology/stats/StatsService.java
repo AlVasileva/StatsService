@@ -41,32 +41,28 @@ public class StatsService {
     }
 
 
-    public long lowerThanAvgSales(long[] sales) {
-        long countMonthLowerThanAvg = 0;
+    public long lowerThanAvg(long[] sales) {
+        long lowerThanAvg = 0;
+        long avg = avgSales(sales);
         for (long sale : sales) {
-            long x = avgSales(sales);
-
-            if (sale < x) {
-                countMonthLowerThanAvg = countMonthLowerThanAvg + 1;
+            if (sale < avg) {
+                lowerThanAvg = lowerThanAvg + 1;
             }
         }
 
-        return countMonthLowerThanAvg;
+        return lowerThanAvg;
     }
 
-    public long countMonthHigherThanAvgSales(long[] sales) {
-        long countMonthHigherThanAvg = 0;
-
+    public long higherThanAvg(long[] sales) {
+        long higherThanAvg = 0;
+        long avg = avgSales(sales);
         for (long sale : sales) {
-            long x = avgSales(sales);
-
-            if (sale >= x) {
-                countMonthHigherThanAvg = countMonthHigherThanAvg + 1;
+            if (sale >= avg) {
+                higherThanAvg = higherThanAvg + 1;
             }
-
         }
 
-        return countMonthHigherThanAvg;
+        return higherThanAvg;
     }
 }
 

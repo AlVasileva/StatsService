@@ -45,7 +45,7 @@ public class StatsServiceTest {
         StatsService service = new StatsService();
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int expectedMonth = 5;
-        long actualMonth = service.lowerThanAvgSales(sales);
+        long actualMonth = service.lowerThanAvg(sales);
         Assertions.assertEquals(expectedMonth, actualMonth);
     }
 
@@ -54,7 +54,7 @@ public class StatsServiceTest {
         StatsService service = new StatsService();
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int expectedMonth = 7;
-        long actualMonth = service.countMonthHigherThanAvgSales(sales);
+        long actualMonth = service.higherThanAvg(sales);
         Assertions.assertEquals(expectedMonth, actualMonth);
     }
 }
