@@ -4,31 +4,31 @@ import java.sql.Array;
 import java.util.Arrays;
 
 public class StatsService {
-    public int allSales(int[] sales) {
-        int sum = 0;
-        for (int sale : sales) {
+    public long allSales(long[] sales) {
+        long sum = 0;
+        for (long sale : sales) {
             sum += sale;
         }
         return sum;
     }
 
-    public int avgSales(int[] sales) {
-        int avgSales = allSales(sales) / 12;
+    public long avgSales(long[] sales) {
+        long avgSales = allSales(sales) / 12;
 
         return avgSales;
     }
 
-    public int maxSales(int[] sales) {
-        int maxMonth = 0;
+    public long maxSales(long[] sales) {
+        long maxMonth = 0;
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] >= sales[maxMonth]) {
+            if (sales[i] >= sales[(int) maxMonth]) {
                 maxMonth = i;
             }
         }
         return maxMonth + 1;
     }
 
-    public int minSales(int[] sales) {
+    public int minSales(long[] sales) {
         int minMonth = 0; // номер месяца с минимальными продажами среди просмотренных ранее
 
         for (int i = 0; i < sales.length; i++) {
@@ -41,11 +41,12 @@ public class StatsService {
     }
 
 
-    public int lowerThanAvgSales(int[] sales) {
-        int countMonthLowerThanAvg = 0;
-        for (int sale : sales) {
+    public long lowerThanAvgSales(long[] sales) {
+        long countMonthLowerThanAvg = 0;
+        for (long sale : sales) {
+            long x = avgSales(sales);
 
-            if (sale < avgSales(sales)) {
+            if (sale < x) {
                 countMonthLowerThanAvg = countMonthLowerThanAvg + 1;
             }
         }
@@ -53,13 +54,16 @@ public class StatsService {
         return countMonthLowerThanAvg;
     }
 
-    public int countMonthHigherThanAvgThanAvgSales(int[] sales) {
-        int countMonthHigherThanAvg = 0;
-        for (int sale : sales) {
+    public long countMonthHigherThanAvgSales(long[] sales) {
+        long countMonthHigherThanAvg = 0;
 
-            if (sale >= avgSales(sales)) {
+        for (long sale : sales) {
+            long x = avgSales(sales);
+
+            if (sale >= x) {
                 countMonthHigherThanAvg = countMonthHigherThanAvg + 1;
             }
+
         }
 
         return countMonthHigherThanAvg;
